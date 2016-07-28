@@ -1,5 +1,13 @@
 #pragma once
 
+#include <string>
+
+#include "CommonTypes.h"
+
+class Vec3;
+class AABB;
+class Vec2;
+
 class Entity {
 public: 
 	virtual ~Entity();
@@ -39,10 +47,10 @@ public:
 	virtual void setNameTagVisible(bool);
 	virtual void getNameTag();
 	virtual void setNameTag(std::string const &);
-	virtual void isInWater();
-	virtual void isInWaterOrRain();
-	virtual void isInLava();
-	virtual void isBaby();
+	virtual bool isInWater();
+	virtual bool isInWaterOrRain();
+	virtual bool isInLava();
+	virtual bool isBaby();
 	virtual void isUnderLiquid(MaterialType);
 	virtual void makeStuckInWeb();
 	virtual void getHeadHeight();
@@ -86,7 +94,7 @@ public:
 	virtual void save(CompoundTag &);
 	virtual void saveWithoutId(CompoundTag &);
 	virtual void load(CompoundTag const &);
-	virtual void loadLinks(CompoundTag const &, std::vector<EntityLink, std::allocator<EntityLink> > &);
+	virtual void loadLinks(CompoundTag const &, std::vector<EntityLink> &);
 	virtual void getEntityTypeId() = 0;
 	virtual void queryEntityRenderer();
 	virtual void getSourceUniqueID();

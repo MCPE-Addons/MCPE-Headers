@@ -16,6 +16,9 @@ class Container;
 class Vec3;
 class IDataInput;
 class IDataOutput;
+namespace Json {
+	class Value;
+};
 
 class Item {
 public: 
@@ -191,7 +194,7 @@ public:
 	static Item *mWheat;
 	static Item *mYellowDust;
 
-	static Item *mCreativeList[];
+	static std::vector<ItemInstance> mCreativeList;
 	static Item *mItemLookupMap[];
 	static Item *mItems[];
 
@@ -205,48 +208,52 @@ public:
 	virtual void setHandEquipped();
 	virtual void setUseAnimation(UseAnimation);
 	virtual void setMaxUseDuration(int);
-	virtual void canBeDepleted();
-	virtual void canDestroySpecial(Block const *);
-	virtual void getLevelDataForAuxValue(int);
-	virtual void isStackedByData();
+	virtual bool canBeDepleted();
+	virtual bool canDestroySpecial(Block const *) const;
+	virtual int getLevelDataForAuxValue(int) const;
+	virtual bool isStackedByData() const;
 	virtual void getMaxDamage();
 	virtual void getAttackDamage();
-	virtual void isHandEquipped();
-	virtual void isArmor();
-	virtual void isDye();
-	virtual void isGlint(ItemInstance const *);
-	virtual void isThrowable();
-	virtual void canDestroyInCreative();
-	virtual void isLiquidClipItem(int);
-	virtual void requiresInteract();
-	virtual void appendFormattedHovertext(ItemInstance const &, Player const &, std::string &, bool);
-	virtual void isValidRepairItem(ItemInstance const &, ItemInstance const &);
-	virtual void getEnchantSlot();
-	virtual void getEnchantValue();
-	virtual void isComplex();
-	virtual void getColor(ItemInstance const &);
-	virtual void use(ItemInstance &, Player &);
+	virtual bool isHandEquipped() const;
+	virtual bool isArmor() const;
+	virtual bool isDye() const;
+	virtual bool isGlint(ItemInstance const *) const;
+	virtual bool isThrowable() const;
+	virtual bool canDestroyInCreative() const;
+	virtual bool isLiquidClipItem(int) const;
+	virtual bool requiresInteract() const;
+	virtual void appendFormattedHovertext(ItemInstance const &, Player const &, std::string &, bool) const;
+	virtual bool isValidRepairItem(ItemInstance const &, ItemInstance const &);
+	virtual int getEnchantSlot() const;
+	virtual int getEnchantValue() const;
+	virtual bool isComplex() const;
+	virtual void getColor(ItemInstance const &) const;
+	virtual bool use(ItemInstance &, Player &);
 	virtual void useOn(ItemInstance *, Player *, int, int, int, signed char, float, float, float);
-	virtual void dispense(BlockSource &, Container &, int, Vec3 const &, signed char);
+	virtual bool dispense(BlockSource &, Container &, int, Vec3 const &, signed char);
 	virtual void useTimeDepleted(ItemInstance *, Level *, Player *);
 	virtual void releaseUsing(ItemInstance *, Player *, int);
-	virtual void getDestroySpeed(ItemInstance *, Block *);
+	virtual float getDestroySpeed(ItemInstance *, Block *);
 	virtual void hurtEnemy(ItemInstance *, Mob *, Mob *);
-	virtual void interactEnemy(ItemInstance *, Mob *, Player *);
+	virtual bool interactEnemy(ItemInstance *, Mob *, Player *);
 	virtual void mineBlock(ItemInstance *, BlockID, int, int, int, Mob *);
-	virtual void buildDescriptionName(ItemInstance const &);
-	virtual void buildEffectDescriptionName(ItemInstance const &);
-	virtual void readUserData(ItemInstance *, IDataInput &);
-	virtual void writeUserData(ItemInstance const *, IDataOutput &, bool);
-	virtual void getMaxStackSize(ItemInstance const *);
+	virtual void buildDescriptionName(ItemInstance const &) const;
+	virtual void buildEffectDescriptionName(ItemInstance const &) const;
+	virtual void readUserData(ItemInstance *, IDataInput &) const;
+	virtual void writeUserData(ItemInstance const *, IDataOutput &, bool) const;
+	virtual unsigned char getMaxStackSize(ItemInstance const *);
 	virtual void inventoryTick(ItemInstance &, Level &, Entity &, int, bool);
 	virtual void onCraftedBy(ItemInstance &, Level &, Player &);
-	virtual void getInteractText(Player const &);
-	virtual void getAnimationFrameFor(Mob &);
-	virtual void isEmissive(int);
-	virtual void getIcon(int, int, bool);
-	virtual void getIconYOffset();
-	virtual void isMirroredArt();
+	virtual void getInteractText(Player const &) const;
+	virtual int getAnimationFrameFor(Mob &) const;
+	virtual bool isEmissive(int) const;
+	virtual void getIcon(int, int, bool) const;
+	virtual int getIconYOffset() const;
+	virtual bool isMirroredArt() const;
+
+	Item(std::string const &, short);
+
+	void init(Json::Value &);
 
 	static Item *lookupByName(std::string const &, bool);
 

@@ -9,7 +9,7 @@ public:
 	virtual void normalTick();
 	virtual void baseTick();
 	virtual void rideTick();
-	virtual void isBaby();
+	virtual bool isBaby();
 	virtual void getHeadHeight();
 	virtual void interactWithPlayer(Player &);
 	virtual void canInteractWith(Player &);
