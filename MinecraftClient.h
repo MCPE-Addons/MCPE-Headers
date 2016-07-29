@@ -1,12 +1,16 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "Vibration.h"
 #include "GameCallbacks.h"
 #include "SkinInfoFactory.h"
+#include "AbstractScreen.h"
 
 class PushNotificationMessage;
+class ScreenChooser;
+class Font;
 
 class MinecraftClient : public Vibration, public GameCallbacks, public SkinInfoFactory {
 public: 
@@ -38,4 +42,25 @@ public:
 	virtual void onLevelExit();
 	virtual void onTick(int, int);
 	virtual void vibrate(int);
+
+	Font *getFont() const;
+
+	void requestScreenshot(std::string const &);
+
+	void handleToggleDayCycleActiveButtonPress();
+	void handleToggleGameModeButtonPress();
+	void handleToggleNoClipButtonPress();
+	void handleSetSpawnPositionButtonPress();
+	void handleTimeStepForwardButtonPress();
+	void handleSimTimeScale(float);
+	void handleSimTimePause(bool);
+	void handleShowUpsellScreen(bool);
+	void handleToggleEnableNewScreensDebugButtonPress();
+	void handleReloadUIDefinitions();
+
+	void leaveGame(bool);
+	ScreenChooser *getScreenChooser() const;
+
+	void pushScreen(std::shared_ptr<AbstractScreen>, bool);
+	void popScreen(int);
 };

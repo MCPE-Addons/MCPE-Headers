@@ -1,12 +1,16 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "CommonTypes.h"
 
-class Vec3;
 class AABB;
+class Vec3;
 class Vec2;
+class CompoundTag;
+class BlockPos;
+class EntityPos;
 
 class Entity {
 public: 
@@ -129,8 +133,8 @@ public:
 	virtual void markHurt();
 	virtual void burn(int, bool);
 	virtual void lavaHurt();
-	//virtual void __imp___cxa_pure_virtual;
-	//virtual void __imp___cxa_pure_virtual;
+	virtual void readAdditionalSaveData(CompoundTag const &) = 0;
+	virtual void addAdditionalSaveData(CompoundTag &) = 0;
 	virtual void _playStepSound(BlockPos const &, int);
 	virtual void checkInsideBlocks(float);
 	virtual void pushOutOfBlocks(Vec3 const &);

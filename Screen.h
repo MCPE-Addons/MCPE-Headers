@@ -12,8 +12,14 @@ class HoloUIInputMode;
 class DirectionId;
 class MojangConnectionStatus;
 
+// Size : 140
 class Screen : public BaseScreen, public GuiComponent {
 public: 
+	//vtable for GuiComponent	// 8
+	char filler1[8];			// 12
+	MinecraftClient *client;	// 20
+	char filler2[116];			// 24
+
 	Screen(MinecraftClient &);
 	virtual ~Screen();
 	virtual void _init(int, int);
@@ -42,12 +48,12 @@ public:
 	virtual void handleGazeGestureInput(short, float, float, float);
 	virtual void handleDictationEvent();
 	virtual void handleCommandEvent(VoiceCommand const &);
-	virtual void renderGameBehind() const;
+	virtual bool renderGameBehind() const;
 	virtual void absorbsInput() const;
-	virtual void closeOnPlayerHurt() const;
-	virtual void getWidth();
-	virtual void getHeight();
-	virtual void getScreenName();
+	virtual bool closeOnPlayerHurt() const;
+	virtual int getWidth();
+	virtual int getHeight();
+	virtual std::string getScreenName();
 	virtual void toGUICoordinate(int, int, int &, int &);
 	virtual void render(int, int, float);
 	virtual void init();

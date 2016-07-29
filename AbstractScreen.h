@@ -14,6 +14,8 @@ class DirectionId;
 
 class AbstractScreen {
 public: 
+	//vtable for AbstractScreen // 0
+
 	virtual ~AbstractScreen();
 	virtual void _init(int, int) = 0;
 	virtual void setSize(int, int) = 0;
@@ -45,26 +47,26 @@ public:
 	virtual void handleGazeGestureInput(short, float, float, float) = 0;
 	virtual void handleDictationEvent() = 0;
 	virtual void handleCommandEvent(VoiceCommand const &) = 0;
-	virtual void renderGameBehind() const = 0;
+	virtual bool renderGameBehind() const = 0;
 	virtual void absorbsInput() const = 0;
-	virtual void closeOnPlayerHurt() const = 0;
-	virtual void isModal() const;
+	virtual bool closeOnPlayerHurt() const = 0;
+	virtual bool isModal() const;
 	virtual void isShowingMenu() const;
 	virtual void shouldStealMouse() const;
 	virtual void screenIsNotFlushable() const;
 	virtual void screenDrawsLast() const;
 	virtual void getFocusedControl();
-	virtual void isWorldViewer() const;
-	virtual void isPauseScreen() const;
+	virtual bool isWorldViewer() const;
+	virtual bool isPauseScreen() const;
 	virtual void renderOnlyWhenTopMost() const;
 	virtual void lowFreqRendering() const;
 	virtual void ignoreAsTop() const;
-	virtual void getWidth() = 0;
-	virtual void getHeight() = 0;
+	virtual int getWidth() = 0;
+	virtual int getHeight() = 0;
 	virtual void getRenderingAABB();
 	virtual void getNumberOfRenderPasses() const;
-	virtual void getEyeRenderingMode() const;
-	virtual void getScreenName() = 0;
-	virtual void getSendTelemetry();
+	virtual bool getEyeRenderingMode() const;
+	virtual std::string getScreenName() = 0;
+	virtual bool getSendTelemetry();
 	virtual void getTelemetryProperty(std::string &, std::string &);
 };
