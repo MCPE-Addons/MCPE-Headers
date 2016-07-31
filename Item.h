@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <json/json.h>
 
 #include "CommonTypes.h"
 
@@ -16,9 +17,6 @@ class Container;
 class Vec3;
 class IDataInput;
 class IDataOutput;
-namespace Json {
-	class Value;
-};
 
 class Item {
 public: 

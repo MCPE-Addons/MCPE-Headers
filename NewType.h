@@ -2,14 +2,14 @@
 
 template<typename T>
 struct NewType {
-    typedef unsigned char Raw;
-    NewType<T>::Raw value;
+	typedef unsigned char Raw;
+	NewType<T>::Raw value;
 
 	NewType() {
 		value = 0;
 	}
 
-    NewType(const NewType<T>::Raw &value) {
+	NewType(const NewType<T>::Raw &value) {
 		this->value = value;
 	}
 
@@ -17,7 +17,7 @@ struct NewType {
 		value = other.value;
 	}
    
-    operator const T &() {
+	operator const T &() {
 		return value;
 	}
 	
@@ -26,11 +26,11 @@ struct NewType {
 		return *this;
 	}
 
-    bool operator==(const NewType<T> &other) const {
+	bool operator==(const NewType<T> &other) const {
 		return value == other;
 	}
 
-    bool operator<(const NewType<T> &other) const {
+	bool operator<(const NewType<T> &other) const {
 		return value < other;
 	}
 };

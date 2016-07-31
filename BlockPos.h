@@ -6,9 +6,7 @@ class Vec3;
 // Size : 12
 class BlockPos {
 public:
-	int x;	// 0
-	int y;	// 4
-	int z;	// 8
+	int x, y, z;	// 0, 4, 8
 
 	BlockPos() : x(0), y(0), z(0) {}
 	BlockPos(int x, int y, int z) : x(x), y(y), z(z) {}

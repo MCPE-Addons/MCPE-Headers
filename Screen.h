@@ -21,6 +21,7 @@ public:
 	char filler2[116];			// 24
 
 	Screen(MinecraftClient &);
+
 	virtual ~Screen();
 	virtual void _init(int, int);
 	virtual void setSize(int, int);

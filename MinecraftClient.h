@@ -3,17 +3,26 @@
 #include <memory>
 #include <string>
 
+#include "App.h"
 #include "Vibration.h"
 #include "GameCallbacks.h"
 #include "SkinInfoFactory.h"
 #include "AbstractScreen.h"
+#include "MinecraftKeyboardManager.h"
 
 class PushNotificationMessage;
 class ScreenChooser;
 class Font;
+class UIDefRepository;
+class MinecraftInputHandler;
 
-class MinecraftClient : public Vibration, public GameCallbacks, public SkinInfoFactory {
-public: 
+class MinecraftClient : public App, public Vibration, public GameCallbacks, public SkinInfoFactory {
+public:
+	//vtable for Vibration				// 16
+	//vtable for GameCallbacks			// 20
+	//vtable for SkinInfoFactory		// 24
+	KeyboardManager keyboardManager;	// 28
+
 	MinecraftClient(int, char **);
 	virtual ~MinecraftClient();
 	virtual void onLowMemory();
@@ -44,6 +53,8 @@ public:
 	virtual void vibrate(int);
 
 	Font *getFont() const;
+	UIDefRepository *getUIDefRepo() const;
+	MinecraftInputHandler *getInput() const;
 
 	void requestScreenshot(std::string const &);
 

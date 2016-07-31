@@ -1,7 +1,11 @@
 #pragma once
 
+// Size : 16
 class App {
 public: 
+	//vtable for App	// 0
+	char filler1[12];	// 4
+
 	virtual ~App();
 	virtual void audioEngineOn();
 	virtual void audioEngineOff();
