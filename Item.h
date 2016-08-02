@@ -254,6 +254,7 @@ public:
 	void init(Json::Value &);
 
 	static Item *lookupByName(std::string const &, bool);
+	static Item *mItems[512];
 
 	//static Random mRandom;
 	//static std::shared_ptr<TextureAtlas> mItemTextureAtlas;

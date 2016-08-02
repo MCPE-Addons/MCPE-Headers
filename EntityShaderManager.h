@@ -3,7 +3,9 @@
 class Entity;
 
 class EntityShaderManager {
-public: 
+public:
 	virtual ~EntityShaderManager();
-	virtual void _getOverlayColor(Entity &, float);
+	virtual void _getOverlayColor(Entity&, float);
+	
+	EntityShaderManager();
 };
