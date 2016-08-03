@@ -3,7 +3,7 @@
 #include "Entity.h"
 
 class Mob : public Entity {
-public: 
+public:
 	virtual ~Mob();
 	virtual void lerpTo(Vec3 const &, Vec2 const &, int);
 	virtual void normalTick();
@@ -128,4 +128,6 @@ public:
 	virtual void onEffectUpdated(MobEffectInstance const &);
 	virtual void onEffectRemoved(MobEffectInstance &);
 	virtual void registerAttributes();
+	
+	void setPersistent();
 };
