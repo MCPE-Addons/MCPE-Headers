@@ -5,12 +5,22 @@
 
 #include "CommonTypes.h"
 
-class AABB;
 class Vec3;
+class AABB;
 class Vec2;
-class CompoundTag;
+enum MaterialType;
+class Player;
+class EntityDamageSource;
 class BlockPos;
+enum EntityEvent;
+enum ArmorSlot;
+class CompoundTag;
+class EntityLink;
+enum EntityType;
+enum DimensionId;
+class ChangeDimensionPacket;
 class EntityPos;
+class BlockPos;
 
 class Entity {
 public:
@@ -99,7 +109,7 @@ public:
 	virtual void saveWithoutId(CompoundTag &);
 	virtual void load(CompoundTag const &);
 	virtual void loadLinks(CompoundTag const &, std::vector<EntityLink> &);
-	virtual void getEntityTypeId() = 0;
+	virtual EntityType getEntityTypeId() = 0;
 	virtual void queryEntityRenderer();
 	virtual void getSourceUniqueID();
 	virtual void setOnFire(int);
@@ -142,4 +152,6 @@ public:
 	virtual void doWaterSplashEffect();
 	virtual void updateInsideBlock();
 	virtual void onBlockCollision(int);
+	
+	BlockPos& _getBlockOnPos();
 };

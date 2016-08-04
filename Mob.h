@@ -2,8 +2,16 @@
 
 #include "Entity.h"
 
+#include "BaseAttributeMap.h"
+
+class Attribute;
+class MobEffectInstance;
+
 class Mob : public Entity {
 public:
+	char mobfiller[3088];				// includes Entity
+	BaseAttributeMap* attributeMap;		// 3088-3092
+
 	virtual ~Mob();
 	virtual void lerpTo(Vec3 const &, Vec2 const &, int);
 	virtual void normalTick();
@@ -98,8 +106,8 @@ public:
 	virtual void hurtArmor(int);
 	virtual void setArmor(ArmorSlot, ItemInstance const *);
 	virtual void getArmor(ArmorSlot) const;
-	virtual void getAllArmor() const;
-	virtual void getAllArmor();
+	virtual std::vector<ItemInstance const *> getAllArmor() const;
+	virtual std::vector<ItemInstance *> getAllArmor();
 	virtual void getArmorTypeHash();
 	virtual void dropHeldItem();
 	virtual void dropAllArmor();
