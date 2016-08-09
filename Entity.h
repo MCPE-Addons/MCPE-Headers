@@ -4,26 +4,31 @@
 #include <vector>
 
 #include "CommonTypes.h"
+#include "DimensionId.h"
+#include "Material.h"
+#include "EntityType.h"
 
-class Vec3;
 class AABB;
+class Vec3;
 class Vec2;
-enum MaterialType;
-class Player;
-class EntityDamageSource;
-class BlockPos;
-enum EntityEvent;
-enum ArmorSlot;
 class CompoundTag;
-class EntityLink;
-enum EntityType;
-enum DimensionId;
-class ChangeDimensionPacket;
-class EntityPos;
 class BlockPos;
+class EntityPos;
+class EntityDamageSource;
+class EntityEvent;
+class ArmorSlot;
+class ChangeDimensionPacket;
+class EntityLocation;
+class EntityLink;
+class ItemInstance;
+class BlockSource;
 
+// Size : 420
 class Entity {
 public:
+	//vtable for Entity		// 0
+	char filler1[416];		// 4
+
 	virtual ~Entity();
 	virtual void _postInit();
 	virtual void reset();
@@ -152,6 +157,7 @@ public:
 	virtual void doWaterSplashEffect();
 	virtual void updateInsideBlock();
 	virtual void onBlockCollision(int);
-	
+
 	BlockPos& _getBlockOnPos();
+	BlockSource *getRegion() const;
 };

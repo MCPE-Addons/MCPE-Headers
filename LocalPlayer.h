@@ -38,7 +38,7 @@ public:
 	virtual void _checkMovementStatistiscs(Vec3 const &);
 	virtual void respawn();
 	virtual void resetPos(bool);
-	virtual void isInTrialMode();
+	virtual bool isInTrialMode();
 	virtual void startCrafting(BlockPos const &);
 	virtual void openContainer(int, BlockPos const &);
 	virtual void openContainer(int, EntityUniqueID const &);

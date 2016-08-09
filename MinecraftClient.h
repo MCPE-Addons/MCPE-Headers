@@ -16,12 +16,14 @@ class Font;
 class UIDefRepository;
 class MinecraftInputHandler;
 
+// Size : 584
 class MinecraftClient : public App, public Vibration, public GameCallbacks, public SkinInfoFactory {
 public:
-	//vtable for Vibration				// 16
-	//vtable for GameCallbacks			// 20
-	//vtable for SkinInfoFactory		// 24
-	KeyboardManager keyboardManager;	// 28
+	//vtable for Vibration						// 16
+	//vtable for GameCallbacks					// 20
+	//vtable for SkinInfoFactory				// 24
+	MinecraftKeyboardManager keyboardManager;	// 28
+	char filler1[544];							// 40
 
 	MinecraftClient(int, char **);
 	virtual ~MinecraftClient();

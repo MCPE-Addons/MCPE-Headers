@@ -1,12 +1,17 @@
 #pragma once
 
+#include <string>
+
 class ChunkPos;
 class Vec3;
 
 // Size : 12
-class BlockPos {
-public:
-	int x, y, z;	// 0, 4, 8
+struct BlockPos {
+	static BlockPos MAX, MIN, ONE, ZERO;
+
+	int x;	// 0
+	int y;	// 4
+	int z;	// 8
 
 	BlockPos() : x(0), y(0), z(0) {}
 	BlockPos(int x, int y, int z) : x(x), y(y), z(z) {}
@@ -15,4 +20,5 @@ public:
 	BlockPos(float, float, float);
 	void neighbor(signed char) const;
 	void relative(signed char, int) const;
+	std::string toString() const;
 };

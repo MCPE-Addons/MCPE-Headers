@@ -31,7 +31,7 @@ public:
 	virtual void setAssociatedBlockPos(BlockPos const &);
 	virtual void setAssociatedEntityUniqueID(EntityUniqueID);
 	virtual void setSuspendInput(bool);
-	virtual void getCallbackInterval();
+	virtual void getCallbackInterval() const;
 	virtual void setViewCommand(ScreenViewCommand);
 	virtual void onRender();
 	virtual void addStaticScreenVars(Json::Value &);

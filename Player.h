@@ -1,6 +1,16 @@
 #pragma once
 
 #include "Mob.h"
+#include "GameType.h"
+
+class ChunkSource;
+class Tick;
+class GlobalPermissionsLevel;
+class UserPermissionsLevel;
+class EntityUniqueID;
+class BlockEntity;
+class TelemetryEventPacket;
+class IContainerManager;
 
 class Player : public Mob {
 public: 
@@ -9,29 +19,29 @@ public:
 	virtual void getAddPacket();
 	virtual void normalTick();
 	virtual void rideTick();
-	virtual void getRidingHeight();
-	virtual void getHeadHeight();
-	virtual void isImmobile();
-	virtual void isPushable();
-	virtual void isPushableByPiston();
-	virtual void isShootable();
-	virtual void isCreativeModeAllowed();
+	virtual float getRidingHeight();
+	virtual float getHeadHeight() const;
+	virtual bool isImmobile() const;
+	virtual bool isPushable() const;
+	virtual bool isPushableByPiston() const;
+	virtual bool isShootable();
+	virtual bool isCreativeModeAllowed();
 	virtual void hurt(EntityDamageSource const &, int);
 	virtual void onBounceStarted(BlockPos const &, FullBlock const &);
 	virtual void handleEntityEvent(EntityEvent, int);
 	virtual void awardKillScore(Entity &, int);
 	virtual void setEquippedSlot(ArmorSlot, int, int);
 	virtual void setEquippedSlot(ArmorSlot, ItemInstance const &);
-	virtual void getEntityTypeId();
-	virtual void getPortalCooldown();
-	virtual void getPortalWaitTime();
+	virtual void getEntityTypeId() const;
+	virtual void getPortalCooldown() const;
+	virtual void getPortalWaitTime() const;
 	virtual void sendMotionPacketIfNeeded();
 	virtual void lavaHurt();
 	virtual void readAdditionalSaveData(CompoundTag const &);
 	virtual void addAdditionalSaveData(CompoundTag &);
 	virtual void die(EntityDamageSource const &);
-	virtual void isSleeping();
-	virtual void getSpeed();
+	virtual bool isSleeping() const;
+	virtual float getSpeed();
 	virtual void setSpeed(float);
 	virtual void travel(float, float);
 	virtual void aiStep();
@@ -39,13 +49,13 @@ public:
 	virtual void getItemUseDuration();
 	virtual void dropAllGear(int);
 	virtual void drop(ItemInstance const *, bool);
-	virtual void sendInventory();
+	virtual void sendInventory() const;
 	virtual void dropDeathLoot(int);
 	virtual void dropRareDeathLoot();
 	virtual void jumpFromGround();
 	virtual void updateAi();
-	virtual void getExperienceReward();
-	virtual void useNewAi();
+	virtual int getExperienceReward() const;
+	virtual bool useNewAi();
 	virtual void registerAttributes();
 	virtual void prepareRegion(ChunkSource &);
 	virtual void destroyRegion();
@@ -58,7 +68,7 @@ public:
 	virtual void _checkMovementStatistiscs(Vec3 const &);
 	virtual void respawn();
 	virtual void resetPos(bool);
-	virtual void isInTrialMode();
+	virtual bool isInTrialMode();
 	virtual void hasResource(int);
 	virtual void completeUsingItem();
 	virtual void drop(ItemInstance const *);
@@ -86,14 +96,14 @@ public:
 	virtual void startSleepInBed(BlockPos const &);
 	virtual void stopSleepInBed(bool, bool);
 	virtual void canStartSleepInBed();
-	virtual void getSleepTimer();
+	virtual void getSleepTimer() const;
 	virtual void openTextEdit(BlockEntity *);
-	virtual void isLocalPlayer();
+	virtual void isLocalPlayer() const;
 	virtual void stopLoading();
 	virtual void setPlayerGameTypePacketReceived(GameType);
 	virtual void setPlayerGameType(GameType);
 	virtual void _crit(Entity &);
-	virtual void getTelemetry();
+	virtual void getTelemetry() const;
 	virtual void sendTelemetryPacket(TelemetryEventPacket const &);
 	virtual void setContainerData(IContainerManager &, int, int) = 0;
 	virtual void slotChanged(IContainerManager &, int, ItemInstance const &, bool) = 0;
@@ -103,4 +113,5 @@ public:
 	virtual void isPositionRelevant(DimensionId, BlockPos const &);
 	virtual void isEntityRelevant(Entity const &);
 	virtual void onMovePlayerPacketNormal(Vec3 const &, Vec2 const &);
+	ItemInstance *getSelectedItem() const;
 };

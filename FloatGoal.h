@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include "Goal.h"
 #include "Mob.h"
 
 class FloatGoal : public Goal {

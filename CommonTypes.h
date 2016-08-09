@@ -16,16 +16,12 @@ typedef std::unordered_set<Player *> PlayerList;
 typedef long unsigned int RandomSeed;
 
 typedef uint_fast8_t Height;
-typedef uint_fast8_t Brightness;
 typedef int_fast8_t FacingID;
 
-struct BlockID : public NewType<unsigned char> {
+struct BlockID : NewType<unsigned char> {
 	static const BlockID AIR;
 
-	BlockID(const uint_fast8_t &id) {
-		value = id;
-	}
-
+	BlockID(const unsigned char &id) { value = id; }
 	bool hasProperty(BlockProperty) const;
 };
 
@@ -41,3 +37,12 @@ struct FullBlock {
 	FullBlock(BlockID id) : id(id), data(0) {}
 	FullBlock(BlockID id, DataID data) : id(id), data(data) {}
 };
+
+struct Brightness : NewType<unsigned char> {
+	static const Brightness INVALID, MIN, MAX;
+
+	Brightness(const unsigned char &id) { value = id; }
+};
+
+struct GlobalPermissionsLevel : NewType<int> {};
+struct UserPermissionsLevel : NewType<int> {};

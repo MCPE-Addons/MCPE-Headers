@@ -5,7 +5,7 @@ class BlockPos;
 // Size : 12
 class Vec3 {
 public:
-	static const Vec3 ZERO, ONE, UINT_X, NEG_UNIT_X, UINT_Y, NEG_UNIT_Y, UINT_Z, NEG_UNIT_Z, MAX, MIN;
+	static Vec3 ZERO, ONE, UINT_X, NEG_UNIT_X, UINT_Y, NEG_UNIT_Y, UINT_Z, NEG_UNIT_Z, MAX, MIN;
 
 	float x, y, z;	// 0, 4, 8
 

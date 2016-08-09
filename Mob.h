@@ -2,13 +2,14 @@
 
 #include "Entity.h"
 
-#include "BaseAttributeMap.h"
-
 class Attribute;
 class MobEffectInstance;
+class ItemEntity;
+class BaseAttributeMap;
 
+// Size : 3344
 class Mob : public Entity {
-public:
+public: 
 	char mobfiller[3088];				// includes Entity
 	BaseAttributeMap* attributeMap;		// 3088-3092
 
@@ -136,6 +137,6 @@ public:
 	virtual void onEffectUpdated(MobEffectInstance const &);
 	virtual void onEffectRemoved(MobEffectInstance &);
 	virtual void registerAttributes();
-	
+
 	void setPersistent();
 };

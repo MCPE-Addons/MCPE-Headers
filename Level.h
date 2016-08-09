@@ -2,6 +2,9 @@
 
 #include "AppPlatformListener.h"
 #include "BlockSourceListener.h"
+#include "HitResult.h"
+#include "ParticleType.h"
+#include "Difficulty.h"
 
 class Player;
 class EntityDamageSource;
@@ -31,7 +34,9 @@ public:
 	virtual void removeEntity(std::unique_ptr<Entity>&&, bool);
 	virtual void removeEntity(Entity&, bool);
 	virtual void onAppSuspended();
-	
+
 	MobFactory* getMobSpawner() const;
 	bool addParticle(ParticleType, const Vec3&, const Vec3&, int);
+	MobFactory *getMobSpawner() const;
+	HitResult &getHitResult();
 };

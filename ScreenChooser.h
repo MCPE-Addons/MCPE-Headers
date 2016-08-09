@@ -8,10 +8,12 @@
 class MinecraftClient;
 class MinecraftUISoundPlayer;
 
+// Size : 28
 class ScreenChooser {
 public:
 	MinecraftClient *client;			// 0
 	MinecraftUISoundPlayer *player;		// 4
+	char filler1[20];					// 8
 
 	ScreenChooser(MinecraftClient &, bool);
 
