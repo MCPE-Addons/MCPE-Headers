@@ -27,7 +27,74 @@ class BlockSource;
 class Entity {
 public:
 	//vtable for Entity		// 0
-	char filler1[416];		// 4
+
+void* synchedData;
+	Vec3 pos;
+	Vec3 oldPos;
+	Vec3 chunkPos;
+	Vec3 velocity;
+	Vec2 rotation;
+	Vec2 idk;
+	Vec2 idk1;
+	SynchedEntityData entityData;
+	char filler[12];
+	DimensionId dimensionId;
+	char filler1[4];
+	Level& level;
+	char idec[4];
+	Color lastLightColor;
+	AABB boundingBox;
+	float someFloat;
+	float headHeight;
+	char filler2[12];
+	float ridingHeight;
+	Vec2 idk2; // 192
+	char filler3[16];
+	int airSupply;
+	int fireTicks;
+	char filler4[8];
+	BlockID block;
+	int wt;
+	char filler5[4];
+	EntityRendererId rendererId;
+	EntityList riders;
+	Entity& rider;
+	Entity& riding;
+	bool isRiding;
+	int idk5;
+	char filler6[12];
+	bool what1;
+	bool what2;
+	bool what3;
+	bool what4;
+	bool what5;
+	bool what6;
+	bool hurtMarked;
+	bool noPhysics;
+	bool shouldRender;
+	bool isInvincible;
+	bool idk6;
+	bool idk7;
+	bool idk8;
+	bool idk9;
+	char uniqueId[8];
+	int autoSend;
+	Vec3 whatVec;
+	char filler7[8];
+	bool what7;
+	bool isStuckInWeb;
+	bool inWater;
+	bool immobile;
+	bool changed;
+	ExplodeComponent* exploder;
+	int idk4;
+	bool isRemoved;
+	bool isGlobal;
+	bool isRegistered;
+	BlockSource& region;
+	
+	static int mEntityCounter;
+
 
 	virtual ~Entity();
 	virtual void _postInit();
