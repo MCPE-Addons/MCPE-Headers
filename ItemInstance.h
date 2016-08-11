@@ -6,6 +6,13 @@ class CompoundTag;
 
 class ItemInstance {
 public:
+
+short count, auxValue;
+	CompoundTag* compundData;
+	bool valid;
+	Item* item;
+	Block* block;
+
 	ItemInstance(Block const *);
 	ItemInstance(Block const *, int);
 	ItemInstance(Block const *, int, int);
