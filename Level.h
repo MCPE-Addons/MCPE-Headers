@@ -35,6 +35,14 @@ public:
 	virtual void removeEntity(Entity&, bool);
 	virtual void onAppSuspended();
 
+Player *getPlayer(const std::string &) const;
+	Player* getRandomPlayer();
+	bool isClientSide() const;
+	void setDayCycleActive(bool);
+	void setTime(int);
+	bool isDayCycleActive();
+	int getTime() const;
+
 	MobFactory* getMobSpawner() const;
 	bool addParticle(ParticleType, const Vec3&, const Vec3&, int);
 	MobFactory *getMobSpawner() const;
