@@ -7,7 +7,7 @@ class ItemEntity : public Entity {
 public:
 	static int LIFETIME;
 
-	char filler2[40];	// 420
+	char filler1[40];	// 420
 	int lifetime;		// 460
 
 	ItemEntity(BlockSource &);

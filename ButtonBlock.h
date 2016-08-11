@@ -26,7 +26,9 @@ public:
 	virtual void getPlacementDataValue(Mob &, BlockPos const &, signed char, Vec3 const &, int);
 	virtual void isAttachedTo(BlockSource &, BlockPos const &, BlockPos &);
 	virtual void entityInside(BlockSource &, BlockPos const &, Entity &);
-	virtual void getVisualShape(unsigned char, AABB &, bool);
+	virtual const AABB &getVisualShape(FacingID, AABB &, bool);
 	virtual void getVariant(int);
 	virtual void getSpawnResourcesAuxValue(unsigned char);
+
+	void _buttonPressed(BlockSource &, FullBlock, const Vec3 &);
 };

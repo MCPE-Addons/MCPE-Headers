@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <memory>
+
 #include "AppPlatformListener.h"
 #include "BlockSourceListener.h"
 #include "HitResult.h"
@@ -11,8 +14,9 @@ class EntityDamageSource;
 class LightLayer;
 class LevelChunk;
 class MobFactory;
-enum ParticleType;
 class Vec3;
+class LevelData;
+class Dimension;
 
 class Level : public AppPlatformListener, public BlockSourceListener {
 public:
@@ -35,9 +39,8 @@ public:
 	virtual void removeEntity(Entity&, bool);
 	virtual void onAppSuspended();
 
-Player *getPlayer(const std::string &) const;
-	Player* getRandomPlayer();
 	bool isClientSide() const;
+
 	void setDayCycleActive(bool);
 	void setTime(int);
 	bool isDayCycleActive();
@@ -45,6 +48,15 @@ Player *getPlayer(const std::string &) const;
 
 	MobFactory* getMobSpawner() const;
 	bool addParticle(ParticleType, const Vec3&, const Vec3&, int);
-	MobFactory *getMobSpawner() const;
 	HitResult &getHitResult();
+	LevelData &getLevelData();
+
+	Player *getPlayer(const std::string &) const;
+	Player *getNearestPlayer(Entity &, float);
+	Player *getNearestPlayer(float, float, float, float);
+	Player *getRandomPlayer();
+
+	std::vector<std::unique_ptr<Player>> &getPlayers();
+
+	Dimension *getDimension(DimensionId) const;
 };

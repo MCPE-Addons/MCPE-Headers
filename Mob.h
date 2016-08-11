@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "ItemInstance.h"
 
 class Attribute;
 class MobEffectInstance;
@@ -11,43 +12,14 @@ class MoveControl;
 class JumpControl;
 class BodyControl;
 class PathNavigation;
-class ItemInstance;
 class Sensing;
 
 // Size : 3344
 class Mob : public Entity {
 public: 
-	//char mobfiller[3088];				// includes Entity
-//	BaseAttributeMap* attributeMap;		// 3088-3092
-float yBodyRot;
-	float yBodyRotOld;
-	float yHeadRot;
-	float yHeadRotOld;
-	char mobfiller[2572];
-	ItemInstance armor[4];
-	char mobfiller1[96];
-	bool b1;
-	bool isJumping;
-	int idk;
-	float speed;
-	LookControl* lookControl;
-	MoveControl* moveControl;
-	JumpControl* jumpControl;
-	BodyControl* bodyControl;
-	PathNavigation* getNavigation;
-	Sensing* getSensing;
-	char mobfiller2[32];
-	float yYa;
-	char mobfiller3[4];
-	bool b2;
-	bool isSurfaceMob;
-	int idk2;
-	char mobfiller4[52];
-	bool canPickupLoot;
-	bool removeWhenFarAway;
-	int idk3;
-	int idk4;
-	int arrowCount;
+	char mobfiller1[2588];	// 420
+	ItemInstance armor[4];	// 3008
+	char mobfiller2[256];	// 3088
 
 	virtual ~Mob();
 	virtual void lerpTo(Vec3 const &, Vec2 const &, int);
@@ -173,6 +145,8 @@ float yBodyRot;
 	virtual void onEffectUpdated(MobEffectInstance const &);
 	virtual void onEffectRemoved(MobEffectInstance &);
 	virtual void registerAttributes();
+
+	float getYHeadRot();
 
 	void setPersistent();
 };

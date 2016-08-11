@@ -6,9 +6,9 @@
 class Inventory : public FillingContainer {
 public: 
 	virtual ~Inventory();
-	virtual void getContainerSize();
+	virtual void getContainerSize() const;
 	virtual void add(ItemInstance &, bool);
-	virtual void canAdd(ItemInstance const &);
+	virtual bool canAdd(ItemInstance const &);
 	virtual void dropAll(bool);
 	virtual void clearSlot(int);
 	virtual void load(ListTag const &);

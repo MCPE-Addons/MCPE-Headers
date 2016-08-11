@@ -1,9 +1,16 @@
 #pragma once
 
-class Vec3;
+#include "Vec3.h"
 
+// Size : 25(28)
 class AABB {
 public:
+	static AABB EMPTY;
+
+	Vec3 min;
+	Vec3 max;
+	bool empty;
+
 	AABB();
 	AABB(const Vec3 &, float);
 	AABB(const Vec3 &, const Vec3 &);

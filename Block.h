@@ -5,13 +5,13 @@
 #include <memory>
 #include <unordered_map>
 
+#include "AABB.h"
 #include "CommonTypes.h"
 #include "CreativeItemCategory.h"
 
 class BlockSource;
 class BlockPos;
 class Random;
-class AABB;
 class Container;
 class Vec3;
 class Mob;
@@ -290,9 +290,9 @@ public:
 	virtual bool isObstructingChests(BlockSource &, BlockPos const &);
 	virtual void randomlyModifyPosition(BlockPos const &, int &) const;
 	virtual void randomlyModifyPosition(BlockPos const &) const;
-	virtual void addAABBs(BlockSource &, BlockPos const &, AABB const *, std::vector<AABB, std::allocator<AABB> > &);
-	virtual AABB getAABB(BlockSource &, BlockPos const &, AABB &, int, bool, int);
-	virtual void addCollisionShapes(BlockSource &, BlockPos const &, AABB const *, std::vector<AABB, std::allocator<AABB> > &, Entity *);
+	virtual void addAABBs(BlockSource &, BlockPos const &, AABB const *, std::vector<AABB> &);
+	virtual const AABB &getAABB(BlockSource &, BlockPos const &, AABB &, int, bool, int);
+	virtual void addCollisionShapes(BlockSource &, BlockPos const &, AABB const *, std::vector<AABB> &, Entity *);
 	virtual bool isCropBlock() const;
 	virtual bool isContainerBlock() const;
 	virtual bool isCraftingBlock() const;
@@ -362,7 +362,7 @@ public:
 	virtual void canHaveExtraData() const;
 	virtual void hasComparatorSignal();
 	virtual void getComparatorSignal(BlockSource &, BlockPos const &, signed char, int);
-	virtual void shouldRenderFace(BlockSource &, BlockPos const &, signed char, AABB const &) const;
+	virtual void shouldRenderFace(BlockSource &, BlockPos const &, FacingID, AABB const &) const;
 	virtual void getIconYOffset() const;
 	virtual void buildDescriptionName(ItemInstance const &) const;
 	virtual void getColor(int) const;
@@ -374,12 +374,12 @@ public:
 	virtual void onGraphicsModeChanged(bool, bool, bool);
 	virtual void getRenderLayer(BlockSource &, BlockPos const &) const;
 	virtual void getExtraRenderLayers();
-	virtual void getVisualShape(BlockSource &, BlockPos const &, AABB &, bool);
-	virtual void getVisualShape(unsigned char, AABB &, bool);
+	virtual const AABB &getVisualShape(BlockSource &, BlockPos const &, AABB &, bool);
+	virtual const AABB &getVisualShape(DataID, AABB &, bool);
 	virtual void getVariant(int) const;
 	virtual void getMappedFace(signed char, int) const;
 	virtual void animateTick(BlockSource &, BlockPos const &, Random &);
-	virtual void getDebugText(std::vector<std::string, std::allocator<std::string> > &);
+	virtual void getDebugText(std::vector<std::string> &);
 	virtual void init();
 	virtual bool canBeSilkTouched() const;
 	virtual void getSilkTouchItemInstance(unsigned char);

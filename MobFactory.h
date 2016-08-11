@@ -3,9 +3,9 @@
 #include <memory>
 
 #include "Level.h"
+#include "EntityType.h"
 
 class Mob;
-enum EntityType;
 class BlockSource;
 class Vec3;
 class BlockPos;

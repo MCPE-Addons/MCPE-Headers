@@ -10,16 +10,16 @@ public:
 	Player *player;		// 56
 
 	virtual ~FillingContainer();
-	virtual void getItem(int);
+	virtual void getItem(int) const;
 	virtual void setItem(int, ItemInstance *);
 	virtual void removeItem(int, int);
-	virtual void getName();
-	virtual void getContainerSize();
-	virtual void getMaxStackSize();
+	virtual void getName() const;
+	virtual void getContainerSize() const;
+	virtual void getMaxStackSize() const;
 	virtual void startOpen(Player &);
 	virtual void stopOpen(Player &);
 	virtual void add(ItemInstance &, bool);
-	virtual void canAdd(ItemInstance const &);
+	virtual bool canAdd(ItemInstance const &);
 	virtual void dropAll(bool);
 	virtual void clearSlot(int);
 	virtual void load(ListTag const &);

@@ -46,3 +46,5 @@ struct Brightness : NewType<unsigned char> {
 
 struct GlobalPermissionsLevel : NewType<int> {};
 struct UserPermissionsLevel : NewType<int> {};
+
+struct EntityUniqueID : NewType<long long int> {};

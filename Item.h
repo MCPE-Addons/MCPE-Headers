@@ -4,6 +4,7 @@
 #include <json/json.h>
 
 #include "CommonTypes.h"
+#include "CreativeItemCategory.h"
 
 class TextureUVCoordinateSet;
 class ItemInstance;
@@ -17,6 +18,7 @@ class Container;
 class Vec3;
 class IDataInput;
 class IDataOutput;
+class UseAnimation;
 
 class Item {
 public: 
@@ -253,8 +255,14 @@ public:
 
 	void init(Json::Value &);
 
+	static void initCreativeItems();
+
+	static void addCreativeItem(Block *, short);
+	static void addCreativeItem(Item *, short);
+	static void addCreativeItem(short, short);
+	static void addCreativeItem(const ItemInstance &);
+
 	static Item *lookupByName(std::string const &, bool);
-	static Item *mItems[512];
 
 	//static Random mRandom;
 	//static std::shared_ptr<TextureAtlas> mItemTextureAtlas;

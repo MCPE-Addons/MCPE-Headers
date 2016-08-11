@@ -4,6 +4,7 @@
 
 class CompoundTag;
 
+// Size : 20
 class Abilities {
 public:
 	bool invulnerable;					// 0

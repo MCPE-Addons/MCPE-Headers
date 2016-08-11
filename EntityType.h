@@ -1,7 +1,6 @@
 #pragma once
 
-enum class EntityType
-{
+enum class EntityType {
 	MOB = 0x100,
 	PATHFINDERMOB = 0x200 | MOB,
 	AGABLEMOB = 0x400 | PATHFINDERMOB,

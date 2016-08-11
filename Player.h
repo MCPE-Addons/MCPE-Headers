@@ -1,7 +1,10 @@
 #pragma once
 
+#include <raknet/RakNetTypes.h>
+
 #include "Mob.h"
 #include "GameType.h"
+#include "Abilities.h"
 
 class ChunkSource;
 class Tick;
@@ -11,9 +14,25 @@ class EntityUniqueID;
 class BlockEntity;
 class TelemetryEventPacket;
 class IContainerManager;
+class BatchedPacketSender;
+class Inventory;
 
 class Player : public Mob {
 public: 
+	enum class PositionMode : char {
+		NORMAL,
+		RESET,
+		ROTATION
+	};
+
+	char filler5[28];					// 3344
+	Abilities abilities;				// 3372
+	RakNet::RakNetGUID guid;			// 3392
+	char filler7[148];					// 3408
+	Inventory *inventory;				// 3556
+	char filler8[44];					// 3560
+	BatchedPacketSender *packetSender;	// 3604
+
 	virtual ~Player();
 	virtual void remove();
 	virtual void getAddPacket();
@@ -32,7 +51,7 @@ public:
 	virtual void awardKillScore(Entity &, int);
 	virtual void setEquippedSlot(ArmorSlot, int, int);
 	virtual void setEquippedSlot(ArmorSlot, ItemInstance const &);
-	virtual void getEntityTypeId() const;
+	virtual EntityType getEntityTypeId() const;
 	virtual void getPortalCooldown() const;
 	virtual void getPortalWaitTime() const;
 	virtual void sendMotionPacketIfNeeded();
@@ -92,13 +111,13 @@ public:
 	virtual void canOpenContainerScreen();
 	virtual void displayChatMessage(std::string const &, std::string const &);
 	virtual void displayClientMessage(std::string const &);
-	virtual void displayLocalizableMessage(std::string const &, std::vector<std::string, std::allocator<std::string> > const &);
+	virtual void displayLocalizableMessage(std::string const &, std::vector<std::string> const &);
 	virtual void startSleepInBed(BlockPos const &);
 	virtual void stopSleepInBed(bool, bool);
 	virtual void canStartSleepInBed();
 	virtual void getSleepTimer() const;
 	virtual void openTextEdit(BlockEntity *);
-	virtual void isLocalPlayer() const;
+	virtual bool isLocalPlayer() const;
 	virtual void stopLoading();
 	virtual void setPlayerGameTypePacketReceived(GameType);
 	virtual void setPlayerGameType(GameType);
@@ -107,11 +126,12 @@ public:
 	virtual void sendTelemetryPacket(TelemetryEventPacket const &);
 	virtual void setContainerData(IContainerManager &, int, int) = 0;
 	virtual void slotChanged(IContainerManager &, int, ItemInstance const &, bool) = 0;
-	virtual void refreshContainer(IContainerManager &, std::vector<ItemInstance, std::allocator<ItemInstance> > const &) = 0;
+	virtual void refreshContainer(IContainerManager &, std::vector<ItemInstance> const &) = 0;
 	virtual void deleteContainerManager();
 	virtual void setFieldOfViewModifier(float);
 	virtual void isPositionRelevant(DimensionId, BlockPos const &);
 	virtual void isEntityRelevant(Entity const &);
 	virtual void onMovePlayerPacketNormal(Vec3 const &, Vec2 const &);
+
 	ItemInstance *getSelectedItem() const;
 };

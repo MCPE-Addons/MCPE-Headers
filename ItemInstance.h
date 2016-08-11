@@ -4,14 +4,14 @@ class Block;
 class Item;
 class CompoundTag;
 
+// Size : 20
 class ItemInstance {
 public:
-
-short count, auxValue;
-	CompoundTag* compundData;
-	bool valid;
-	Item* item;
-	Block* block;
+	unsigned char count;		// 0
+	unsigned short auxValue;	// 2
+	char filler1[8];			// 4
+	Item *item;					// 12
+	Block *block;				// 16
 
 	ItemInstance(Block const *);
 	ItemInstance(Block const *, int);
@@ -32,4 +32,11 @@ short count, auxValue;
 	ItemInstance(void);
 
 	int getId() const;
+
+	static ItemInstance *clone(const ItemInstance *);
+	static ItemInstance cloneSafe(const ItemInstance *);
+
+	std::string getName() const;
+	std::string getCustomName() const;
+	std::string getHoverName() const;
 };

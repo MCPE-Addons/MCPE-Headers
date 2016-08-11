@@ -3,8 +3,8 @@
 // Size : 16
 class App {
 public: 
-	//vtable for App	// 0
-	char filler1[12];	// 4
+	//vtable for App		// 0
+	char appfiller1[12];	// 4
 
 	virtual ~App();
 	virtual void audioEngineOn();
