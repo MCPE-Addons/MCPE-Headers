@@ -15,5 +15,5 @@ public:
 	int getGameType() const;
 	int getGenerator() const;
 	unsigned int getSeed() const;
-	int hasBeenLoadedInCreative() const;
+	bool hasBeenLoadedInCreative() const;
 };
