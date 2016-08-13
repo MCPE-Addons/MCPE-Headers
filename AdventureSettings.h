@@ -1,12 +1,13 @@
 #pragma once
 
-struct AdventureSettings {
-	AdventureSettings();
-
+class AdventureSettings {
+public:
 	bool doTickTime;
 	bool noPvP;
 	bool noPvM;
 	bool noMvP;
-	bool immutableWorld;
-	bool showNameTags;
+	bool mayPlaceOrDestroyBlocks;
+	bool autojump;
+
+	AdventureSettings();
 };
