@@ -18,8 +18,9 @@ public:
 	PermissionsHandler *permsHandler;	// 16
 
 	Abilities();
-	void addSaveData(CompoundTag*);
-	void loadSaveData(CompoundTag*);
+
+	void addSaveData(CompoundTag&);
+	void loadSaveData(const CompoundTag&);
 
 	bool isFlying();
 	float getFlyingSpeed() const;

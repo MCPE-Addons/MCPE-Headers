@@ -14,6 +14,11 @@ public:
 		int enchantValue;			// 20-24
 	};
 	
+	ArmorSlot slot;					// 68-72
+	int idkk;						// 72-76
+	ArmorItem::ArmorMaterial& tier; // 76-80
+	int idkkk;						// 80-84
+	
 	virtual ~ArmorItem();
 	virtual bool isArmor() const;
 	virtual void appendFormattedHovertext(const ItemInstance&, const Player&, std::string&, bool) const;
