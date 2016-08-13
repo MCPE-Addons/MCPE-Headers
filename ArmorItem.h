@@ -9,7 +9,7 @@ public:
 	public:
 		ArmorMaterial(int, int, int, int, int, int);
 		
-		int idk;					// 0-4
+		int durabilityMultiplier;	// 0-4
 		int slotProtection[4];		// 4-20
 		int enchantValue;			// 20-24
 	};
