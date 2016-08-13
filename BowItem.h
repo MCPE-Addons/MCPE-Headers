@@ -3,7 +3,9 @@
 #include "Item.h"
 
 class BowItem : public Item {
-public:
+public:	
+	TextureUVCoordinateSet icons[3];	// 68-152
+	
 	virtual ~BowItem();
 	virtual int getEnchantSlot() const;
 	virtual int getEnchantValue() const;

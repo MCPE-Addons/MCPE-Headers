@@ -7,7 +7,7 @@ class Mob;
 // Size : 464
 class LargeFireball : public Fireball {
 public: 
-	char filler4[4];	// 460
+	int explosionPower;	// 460
 
 	LargeFireball(BlockSource &);
 	LargeFireball(BlockSource &, Vec3 const &, Vec3 const &);
