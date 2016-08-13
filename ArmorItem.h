@@ -15,9 +15,9 @@ public:
 	};
 	
 	ArmorSlot slot;					// 68-72
-	int idkk;						// 72-76
-	ArmorItem::ArmorMaterial& tier; // 76-80
-	int idkkk;						// 80-84
+	int defense;					// 72-76
+	int modelIndex;					// 76-80
+	ArmorItem::ArmorMaterial& tier;	// 80-84
 	
 	virtual ~ArmorItem();
 	virtual bool isArmor() const;
