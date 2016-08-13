@@ -114,7 +114,7 @@ public:
 	virtual void getArmorCoverPercentage();
 	virtual void hurtArmor(int);
 	virtual void setArmor(ArmorSlot, ItemInstance const *);
-	virtual void getArmor(ArmorSlot) const;
+	virtual ItemInstance *getArmor(ArmorSlot) const;
 	virtual std::vector<ItemInstance const *> getAllArmor() const;
 	virtual std::vector<ItemInstance *> getAllArmor();
 	virtual void getArmorTypeHash();
