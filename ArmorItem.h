@@ -19,14 +19,13 @@ public:
 	int modelIndex;					// 76-80
 	ArmorItem::ArmorMaterial& tier;	// 80-84
 	
-	virtual ~ArmorItem();
 	virtual bool isArmor() const;
 	virtual void appendFormattedHovertext(const ItemInstance&, const Player&, std::string&, bool) const;
 	virtual bool isValidRepairItem(const ItemInstance&, const ItemInstance&);
 	virtual int getEnchantSlot() const;
 	virtual int getEnchantValue() const;
 	virtual void getColor(const ItemInstance&) const;
-	virtual void dispense(BlockSource&, Container&, int, const Vec3&, signed char);
+	virtual bool dispense(BlockSource&, Container&, int, const Vec3&, signed char);
 	
 	ArmorItem(const std::string&, int, const ArmorItem::ArmorMaterial&, int, ArmorSlot);
 	

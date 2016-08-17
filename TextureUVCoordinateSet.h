@@ -15,4 +15,8 @@ public:
 	
 	TextureUVCoordinateSet();
 	TextureUVCoordinateSet(float, float, float, float, unsigned short, unsigned short, ResourceLocation);
+	
+	bool operator==(const TextureUVCoordinateSet& tex) const {
+		return this->x == tex.x && this->y == tex.y && this->x1 == tex.x1 && this->y1 == tex.y1 && this->width == tex.width && this->height == tex.height && this->location == tex.location;
+	}
 };

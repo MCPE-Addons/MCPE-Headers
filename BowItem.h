@@ -3,16 +3,15 @@
 #include "Item.h"
 
 class BowItem : public Item {
-public:	
-	TextureUVCoordinateSet icons[3];	// 68-152
+public:
+	TextureUVCoordinateSet icons[3]; // 68-152
 	
-	virtual ~BowItem();
 	virtual int getEnchantSlot() const;
 	virtual int getEnchantValue() const;
-	virtual void use(ItemInstance&, Player&);
-	virtual bool releaseUsing(ItemInstance*, Player*, int);
+	virtual bool use(ItemInstance&, Player&);
+	virtual void releaseUsing(ItemInstance*, Player*, int);
 	virtual int getAnimationFrameFor(Mob&) const;
-	virtual void getIcon(int, int, bool) const;
+	virtual const TextureUVCoordinateSet& getIcon(int, int, bool) const;
 	
 	BowItem(const std::string&, int);
 	

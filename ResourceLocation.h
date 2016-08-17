@@ -21,4 +21,8 @@ public:
 	}
 
 	std::string getFullPath() const;
+	
+	bool operator==(const ResourceLocation& res) const {
+		return this->str1 == res.str1 && this->str2 == res.str2;
+	}
 };

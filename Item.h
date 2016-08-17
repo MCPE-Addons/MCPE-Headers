@@ -2,7 +2,7 @@
 
 #include <string>
 #include <memory>
-#include <json/json.h>
+#include "json/json.h"
 
 #include "CommonTypes.h"
 #include "CreativeItemCategory.h"
@@ -21,7 +21,7 @@ class Container;
 class Vec3;
 class IDataInput;
 class IDataOutput;
-enum UseAnimation;
+enum UseAnimation {};
 
 class Item {
 public:
@@ -52,7 +52,7 @@ public:
 	virtual int getLevelDataForAuxValue(int) const;
 	virtual bool isStackedByData() const;
 	virtual void getMaxDamage();
-	virtual void getAttackDamage();
+	virtual int getAttackDamage();
 	virtual bool isHandEquipped() const;
 	virtual bool isArmor() const;
 	virtual bool isDye() const;
@@ -76,7 +76,7 @@ public:
 	virtual void hurtEnemy(ItemInstance *, Mob *, Mob *);
 	virtual bool interactEnemy(ItemInstance *, Mob *, Player *);
 	virtual void mineBlock(ItemInstance *, BlockID, int, int, int, Mob *);
-	virtual void buildDescriptionName(ItemInstance const &) const;
+	virtual std::string buildDescriptionName(ItemInstance const &) const;
 	virtual void buildEffectDescriptionName(ItemInstance const &) const;
 	virtual void readUserData(ItemInstance *, IDataInput &) const;
 	virtual void writeUserData(ItemInstance const *, IDataOutput &, bool) const;
@@ -86,7 +86,7 @@ public:
 	virtual void getInteractText(Player const &) const;
 	virtual int getAnimationFrameFor(Mob &) const;
 	virtual bool isEmissive(int) const;
-	virtual void getIcon(int, int, bool) const;
+	virtual const TextureUVCoordinateSet& getIcon(int, int, bool) const;
 	virtual int getIconYOffset() const;
 	virtual bool isMirroredArt() const;
 
@@ -94,6 +94,7 @@ public:
 
 	void init(Json::Value &);
 
+	static void initItems();
 	static void initCreativeItems();
 
 	static void addCreativeItem(Block *, short);
@@ -102,6 +103,7 @@ public:
 	static void addCreativeItem(const ItemInstance &);
 
 	static Item *lookupByName(std::string const &, bool);
+	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const &, int);
 
 	static std::vector<ItemInstance> mCreativeList;
 	static Item *mItemLookupMap[];

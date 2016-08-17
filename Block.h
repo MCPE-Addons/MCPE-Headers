@@ -399,6 +399,8 @@ public:
 	void setCategory(CreativeItemCategory);
 	std::string &getDescriptionId() const;
 	void setSolid(bool);
+	bool isType(const Block*) const;
+	static Block* lookupByName(const std::string&, bool);
 
 	static void initBlocks();
 };
