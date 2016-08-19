@@ -29,9 +29,11 @@ public:
 	ItemInstance(int, int, int);
 	ItemInstance(int, int, int, CompoundTag const *);
 
-	ItemInstance(void);
+	ItemInstance();
 
 	int getId() const;
+	void init(int, int, int);
+	void hurtAndBreak(int, Mob *);
 
 	static ItemInstance *clone(const ItemInstance *);
 	static ItemInstance cloneSafe(const ItemInstance *);
