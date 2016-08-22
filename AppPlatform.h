@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "CommonTypes.h"
+
 class TextureData;
 class Vec2;
 class FilePickerSettings;
@@ -12,8 +14,12 @@ class ControllerType;
 class FullscreenMode;
 class ImagePickingCallback;
 
+enum class UIScalingRules { Desktop, OSX, PocketEdition };
+
 class AppPlatform {
 public: 
+	static AppPlatform *mSingleton;
+
 	virtual ~AppPlatform();
 	virtual void getDataUrl() = 0;
 	virtual void getAlternateDataUrl();
@@ -46,7 +52,7 @@ public:
 	virtual void createAndroidLaunchIntent();
 	virtual void updateLocalization(std::string const &);
 	virtual void setSleepEnabled(bool);
-	virtual void getExternalStoragePath() = 0;
+	virtual const std::string &getExternalStoragePath() = 0;
 	virtual void getInternalStoragePath() = 0;
 	virtual void getUserdataPath() = 0;
 	virtual void getUserdataPathForLevels();
@@ -115,5 +121,6 @@ public:
 	virtual void getPlatformUIScalingRules();
 	virtual void getPlatformTempPath() = 0;
 
-	int getUIScalingRules() const;
+	UIScalingRules getUIScalingRules() const;
+	void setUIScalingRules(UIScalingRules);
 };

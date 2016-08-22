@@ -27,7 +27,7 @@ public:
 	virtual void createHolographicPlatform();
 	virtual void createAndroidLaunchIntent();
 	virtual void updateLocalization(std::string const &);
-	virtual void getExternalStoragePath();
+	virtual const std::string &getExternalStoragePath();
 	virtual void getInternalStoragePath();
 	virtual void getUserdataPath();
 	virtual void getUserdataPathForLevels();

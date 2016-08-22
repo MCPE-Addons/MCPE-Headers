@@ -13,13 +13,15 @@ class JumpControl;
 class BodyControl;
 class PathNavigation;
 class Sensing;
+class AttributeInstance;
 
 // Size : 3344
 class Mob : public Entity {
 public: 
-	char mobfiller1[2588];	// 420
-	ItemInstance armor[4];	// 3008
-	char mobfiller2[256];	// 3088
+	char mobfiller1[2588];			// 420
+	ItemInstance armor[4];			// 3008
+	BaseAttributeMap* attributeMap;	// 3088-3092
+	char mobfiller2[252];			// 3092
 
 	virtual ~Mob();
 	virtual void lerpTo(Vec3 const &, Vec2 const &, int);
@@ -107,14 +109,14 @@ public:
 	virtual void doHurtTarget(Entity *);
 	virtual bool canBeControlledByRider();
 	virtual void teleportTo(Vec3 const &);
-	virtual void getMutableAttribute(Attribute const &);
+	virtual AttributeInstance *getMutableAttribute(Attribute const &);
 	virtual void getAttribute(Attribute const &) const;
 	virtual void getEquipmentCount() const;
 	virtual void getArmorValue();
 	virtual void getArmorCoverPercentage();
 	virtual void hurtArmor(int);
 	virtual void setArmor(ArmorSlot, ItemInstance const *);
-	virtual ItemInstance *getArmor(ArmorSlot) const;
+	virtual void getArmor(ArmorSlot) const;
 	virtual std::vector<ItemInstance const *> getAllArmor() const;
 	virtual std::vector<ItemInstance *> getAllArmor();
 	virtual void getArmorTypeHash();

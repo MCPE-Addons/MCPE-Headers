@@ -8,8 +8,8 @@
 // Size : 348
 class MinecraftScreenController : public ScreenController {
 public: 
-	MinecraftScreenModel *model;	// 328
-	char filler2[16];				// 332
+	std::shared_ptr<MinecraftScreenModel> model;	// 328
+	char filler2[12];								// 336
 
 	MinecraftScreenController(std::shared_ptr<MinecraftScreenModel>);
 	virtual ~MinecraftScreenController();
@@ -17,7 +17,7 @@ public:
 	virtual void handleGameEventNotification(ui::GameEventNotification);
 	virtual void tick();
 	virtual void setSuspendInput(bool);
-	virtual void _isStillValid();
+	virtual void _isStillValid() const;
 	virtual void _getGamepadHelperVisible();
 	virtual void _getButtonADescription();
 	virtual void _getButtonBDescription();

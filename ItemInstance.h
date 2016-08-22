@@ -13,21 +13,21 @@ public:
 	Item *item;					// 12
 	Block *block;				// 16
 
-	ItemInstance(Block const *);
-	ItemInstance(Block const *, int);
-	ItemInstance(Block const *, int, int);
+	ItemInstance(const Block *);
+	ItemInstance(const Block *, int);
+	ItemInstance(const Block *, int, int);
 
-	ItemInstance(Item const *);
-	ItemInstance(Item const *, int);
-	ItemInstance(Item const *, int, int);
-	ItemInstance(Item const *, int, int, CompoundTag const *);
+	ItemInstance(const Item *);
+	ItemInstance(const Item *, int);
+	ItemInstance(const Item *, int, int);
+	ItemInstance(const Item *, int, int, const CompoundTag *);
 
-	ItemInstance(ItemInstance const&);
+	ItemInstance(const ItemInstance &);
 
 	ItemInstance(bool);
 
 	ItemInstance(int, int, int);
-	ItemInstance(int, int, int, CompoundTag const *);
+	ItemInstance(int, int, int, const CompoundTag *);
 
 	ItemInstance();
 
@@ -41,4 +41,13 @@ public:
 	std::string getName() const;
 	std::string getCustomName() const;
 	std::string getHoverName() const;
+
+	bool isNull() const;
+
+	bool operator=(const ItemInstance &);
+	bool operator==(const ItemInstance &);
+	bool operator!=(const ItemInstance &);
+
+	short getAuxValue() const;
+	void setAuxValue(short);
 };

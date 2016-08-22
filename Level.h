@@ -8,6 +8,8 @@
 #include "HitResult.h"
 #include "ParticleType.h"
 #include "Difficulty.h"
+#include "EntityType.h"
+#include "CommonTypes.h"
 
 class Player;
 class EntityDamageSource;
@@ -17,8 +19,9 @@ class MobFactory;
 class Vec3;
 class LevelData;
 class Dimension;
+class NetEventCallback;
 
-class Level : public AppPlatformListener, public BlockSourceListener {
+class Level : public BlockSourceListener, public AppPlatformListener {
 public:
 	virtual ~Level();
 	virtual void onSourceCreated(BlockSource&);
@@ -51,6 +54,8 @@ public:
 	HitResult &getHitResult();
 	LevelData &getLevelData();
 
+	Player *getLocalPlayer() const;
+	Player *getPlayer(EntityUniqueID) const;
 	Player *getPlayer(const std::string &) const;
 	Player *getNearestPlayer(Entity &, float);
 	Player *getNearestPlayer(float, float, float, float);
@@ -59,4 +64,16 @@ public:
 	std::vector<std::unique_ptr<Player>> &getPlayers();
 
 	Dimension *getDimension(DimensionId) const;
+	
+	Difficulty getDifficulty() const;
+
+	void setSpawnSettings(bool);
+	bool getSpawnEntities() const;
+
+	NetEventCallback *getNetEventCallback() const;
+
+	Entity *getEntity(EntityUniqueID, bool) const;
+	void getEntities(DimensionId, EntityType, const AABB &, std::vector<Entity *> &);
+
+	void forceRemoveEntity(Entity &);
 };

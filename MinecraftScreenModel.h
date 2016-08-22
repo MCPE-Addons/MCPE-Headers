@@ -1,6 +1,7 @@
 #pragma once
 
 class MinecraftClient;
+class LocalPlayer;
 
 // Size : 24
 class MinecraftScreenModel {
@@ -16,4 +17,5 @@ public:
 	virtual void handleGameEventNotification(ui::GameEventNotification);
 
 	std::string getPlayerName() const;
+	LocalPlayer *getLocalPlayer();
 };

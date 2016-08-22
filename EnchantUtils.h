@@ -6,7 +6,7 @@ class ItemInstance;
 
 class EnchantUtils {
 public:
-	static ItemInstance& applyEnchant(ItemInstance&, int, int);
-	static ItemInstance& applyEnchant(ItemInstance&, const EnchantmentInstance&);
-	static ItemInstance& randomlyEnchant(ItemInstance&);
+	static bool applyEnchant(ItemInstance&, int, int);
+	static bool applyEnchant(ItemInstance&, const EnchantmentInstance&);
+	static bool randomlyEnchant(ItemInstance&);
 };

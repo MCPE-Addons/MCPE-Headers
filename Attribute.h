@@ -2,6 +2,7 @@
 
 #include <string>
 
+// Size : 20
 class Attribute {
 public:
 	float defaultValue;		// 0-4

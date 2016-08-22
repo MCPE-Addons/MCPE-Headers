@@ -13,12 +13,13 @@ class Vec3;
 class Player;
 class CompoundTag;
 
-// Size: 44
+// Size : 44
 class Container {
-public:
+public: 
+	//vtable for Container			// 0
 	ContainerType type;				// 4-8
 	char containerfiller1[44 - 8];	// 8-44
-	
+
 	virtual ~Container();
 	virtual void addListener(ContainerListener*);
 	virtual void removeListener(ContainerListener*);
@@ -45,6 +46,6 @@ public:
 	virtual bool hasCustomName() const;
 	virtual void readAdditionalSaveData(const CompoundTag&);
 	virtual void addAdditionalSaveData(CompoundTag&);
-	
+
 	ContainerType getContainerType();
 };

@@ -3,13 +3,12 @@
 #include "Mob.h"
 
 class PathfinderMob : public Mob {
-public:
+public: 
 	virtual ~PathfinderMob();
-	virtual EntityType getEntityTypeId() const = 0;
 	virtual void tickLeash();
-	virtual void readAdditionalSaveData(const CompoundTag&);
-	virtual void addAdditionalSaveData(CompoundTag&);
-	virtual void canSpawn(bool);
+	virtual void readAdditionalSaveData(CompoundTag const &);
+	virtual void addAdditionalSaveData(CompoundTag &);
+	virtual bool canSpawn(bool);
 	virtual void updateAi();
 	virtual Entity* getAttackTarget();
 	virtual void setAttackTarget(Entity*);

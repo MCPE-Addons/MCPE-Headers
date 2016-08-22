@@ -9,12 +9,15 @@
 #include "SkinInfoFactory.h"
 #include "AbstractScreen.h"
 #include "MinecraftKeyboardManager.h"
+#include "LevelSettings.h"
 
 class PushNotificationMessage;
 class ScreenChooser;
 class Font;
 class UIDefRepository;
 class MinecraftInputHandler;
+class Entity;
+class Options;
 
 // Size : 584
 class MinecraftClient : public App, public Vibration, public GameCallbacks, public SkinInfoFactory {
@@ -23,7 +26,12 @@ public:
 	//vtable for GameCallbacks					// 20
 	//vtable for SkinInfoFactory				// 24
 	MinecraftKeyboardManager keyboardManager;	// 28
-	char filler1[544];							// 40
+	char filler1[8];							// 40
+	std::string worldFolder;					// 48
+	std::string peFolder;						// 52
+	char filler2[260];							// 56
+	Options *options;							// 316
+	char filler3[264];							// 320
 
 	MinecraftClient(int, char **);
 	virtual ~MinecraftClient();
@@ -54,11 +62,16 @@ public:
 	virtual void onTick(int, int);
 	virtual void vibrate(int);
 
+	void startLocalServer(std::string, std::string, LevelSettings);
+	void leaveGame(bool);
+
 	Font *getFont() const;
 	UIDefRepository *getUIDefRepo() const;
 	MinecraftInputHandler *getInput() const;
 
 	void requestScreenshot(std::string const &);
+
+	void initOptionObservers();
 
 	void handleToggleDayCycleActiveButtonPress();
 	void handleToggleGameModeButtonPress();
@@ -71,9 +84,14 @@ public:
 	void handleToggleEnableNewScreensDebugButtonPress();
 	void handleReloadUIDefinitions();
 
-	void leaveGame(bool);
 	ScreenChooser *getScreenChooser() const;
 
 	void pushScreen(std::shared_ptr<AbstractScreen>, bool);
 	void popScreen(int);
+
+	void setCameraTargetEntity(Entity *);
+	void setCameraEntity(Entity *);
+
+	Entity *getCameraTargetEntity();
+	Entity *getCameraEntity();
 };

@@ -13,7 +13,7 @@ struct NewType {
 		return *this;
 	}
 
-	operator const T &() const { return value; }
+	operator const T() const { return value; }
 	bool operator==(const NewType<T> &other) const { return value == other.value;}
 	bool operator!=(const NewType<T> &other) const { return value != other.value; }
 	bool operator<(const NewType<T> &other) const { return value < other.value; }

@@ -7,6 +7,7 @@
 #include "DimensionId.h"
 #include "Material.h"
 #include "EntityType.h"
+#include "ArmorSlot.h"
 
 class AABB;
 class Vec3;
@@ -16,20 +17,22 @@ class BlockPos;
 class EntityPos;
 class EntityDamageSource;
 class EntityEvent;
-class ArmorSlot;
 class ChangeDimensionPacket;
 class EntityLocation;
 class EntityLink;
 class ItemInstance;
 class BlockSource;
+class Level;
 
 // Size : 420
 class Entity {
 public:
 	//vtable for Entity		// 0
-	char entfiller1[304];	// 4
+	char entfiller1[116];	// 4
+	Level *level;			// 120
+	char entfiller2[184];	// 124
 	float fallDistance;		// 308
-	char entfiller2[108];	// 312
+	char entfiller3[108];	// 312
 
 	virtual ~Entity();
 	virtual void _postInit();
@@ -56,7 +59,7 @@ public:
 	virtual void positionRider(Entity &) const;
 	virtual float getRidingHeight();
 	virtual float getRideHeight() const;
-	virtual void startRiding(Entity &);
+	virtual bool startRiding(Entity &);
 	virtual void addRider(Entity &);
 	virtual void removeRider(Entity &);
 	virtual void intersects(Vec3 const &, Vec3 const &);

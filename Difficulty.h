@@ -1,8 +1,8 @@
 #pragma once
 
 enum class Difficulty : int {
-	DIFFICULTY_PEACEFUL = 0,
-	DIFFICULTY_EASY,
-	DIFFICULTY_NORMAL,
-	DIFFICULTY_HARD
+	PEACEFUL = 0,
+	EASY,
+	NORMAL,
+	HARD
 };

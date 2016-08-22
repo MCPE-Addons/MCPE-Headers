@@ -9,7 +9,7 @@ public:
 	virtual void move(Vec3 const &);
 	virtual void normalTick();
 	virtual void rideTick();
-	virtual void startRiding(Entity &);
+	virtual bool startRiding(Entity &);
 	virtual void hurt(EntityDamageSource const &, int);
 	virtual void handleInsidePortal(BlockPos const &);
 	virtual void changeDimension(DimensionId);
