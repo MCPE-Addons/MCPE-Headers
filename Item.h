@@ -9,6 +9,7 @@
 #include "TextureUVCoordinateSet.h"
 #include "FoodItemComponent.h"
 #include "SeedItemComponent.h"
+#include "Random.h"
 
 class ItemInstance;
 class Player;
@@ -210,7 +211,7 @@ public:
 	std::unique_ptr<SeedItemComponent> seed;	// 64-68
 
 	virtual ~Item();
-	virtual void setIcon(std::string const &, int);
+	virtual void setIcon(const std::string &, int);
 	virtual void setIcon(TextureUVCoordinateSet const &);
 	virtual void setMaxStackSize(unsigned char);
 	virtual void setCategory(CreativeItemCategory);
@@ -262,7 +263,7 @@ public:
 	virtual int getIconYOffset() const;
 	virtual bool isMirroredArt() const;
 
-	Item(std::string const &, short);
+	Item(const std::string &, short);
 
 	void init(Json::Value &);
 
@@ -274,13 +275,13 @@ public:
 	static void addCreativeItem(short, short);
 	static void addCreativeItem(const ItemInstance &);
 
-	static Item *lookupByName(std::string const &, bool);
+	static Item *lookupByName(const std::string &, bool);
 	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const &, int);
 
 	static std::vector<ItemInstance> mCreativeList;
 	static Item *mItemLookupMap[];
-	static Item *mItems[];
+	static Item *mItems[512];
 
-	//static Random mRandom;
+	static Random mRandom;
 	//static std::shared_ptr<TextureAtlas> mItemTextureAtlas;
 };
