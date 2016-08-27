@@ -24,7 +24,7 @@ public:
 	char mobfiller2[252];			// 3092
 
 	virtual ~Mob();
-	virtual void lerpTo(Vec3 const &, Vec2 const &, int);
+	virtual void lerpTo(const Vec3 &, const Vec2 &, int);
 	virtual void normalTick();
 	virtual void baseTick();
 	virtual void rideTick();
@@ -51,14 +51,14 @@ public:
 	virtual void stopRiding(bool, bool);
 	virtual void buildDebugInfo(std::string &) const;
 	virtual void outOfWorld();
-	virtual void readAdditionalSaveData(CompoundTag const &);
+	virtual void readAdditionalSaveData(const CompoundTag &);
 	virtual void addAdditionalSaveData(CompoundTag &);
-	virtual void _playStepSound(BlockPos const &, int);
+	virtual void _playStepSound(const BlockPos &, int);
 	virtual void postInit();
 	virtual void knockback(Entity *, int, float, float);
-	virtual void die(EntityDamageSource const &);
+	virtual void die(const EntityDamageSource &);
 	virtual void resolveDeathLoot(int);
-	virtual bool canSee(Entity const &) const;
+	virtual bool canSee(const Entity &) const;
 	virtual void onLadder(bool);
 	virtual void spawnAnim();
 	virtual bool isSleeping() const;
@@ -68,15 +68,15 @@ public:
 	virtual void getVoicePitch();
 	virtual void playAmbientSound();
 	virtual void getAmbientSoundInterval();
-	virtual void getItemInHandIcon(ItemInstance const *, int);
+	virtual void getItemInHandIcon(const ItemInstance *, int);
 	virtual float getSpeed();
 	virtual void setSpeed(float);
 	virtual float getJumpPower() const;
 	virtual void heal(int);
-	virtual void hurtEffects(EntityDamageSource const &, int);
+	virtual void hurtEffects(const EntityDamageSource &, int);
 	virtual void getMeleeWeaponDamageBonus(Mob *);
 	virtual void getMeleeKnockbackBonus();
-	virtual void actuallyHurt(int, EntityDamageSource const *);
+	virtual void actuallyHurt(int, const EntityDamageSource *);
 	virtual bool isInvertedHealAndHarm() const;
 	virtual void travel(float, float);
 	virtual void applyFinalFriction(float);
@@ -91,7 +91,7 @@ public:
 	virtual void getAttackAnim(float);
 	virtual void performRangedAttack(Mob &, float);
 	virtual void getCarriedItem();
-	virtual void setCarriedItem(ItemInstance const &);
+	virtual void setCarriedItem(const ItemInstance &);
 	virtual void getItemUseDuration();
 	virtual void swing();
 	virtual void ate();
@@ -109,24 +109,24 @@ public:
 	virtual void doHurtTarget(Entity *);
 	virtual bool canBeControlledByRider();
 	virtual void teleportTo(Vec3 const &);
-	virtual AttributeInstance *getMutableAttribute(Attribute const &);
-	virtual void getAttribute(Attribute const &) const;
+	virtual AttributeInstance *getMutableAttribute(const Attribute &);
+	virtual void getAttribute(const Attribute &) const;
 	virtual void getEquipmentCount() const;
 	virtual void getArmorValue();
 	virtual void getArmorCoverPercentage();
 	virtual void hurtArmor(int);
-	virtual void setArmor(ArmorSlot, ItemInstance const *);
-	virtual void getArmor(ArmorSlot) const;
-	virtual std::vector<ItemInstance const *> getAllArmor() const;
+	virtual void setArmor(ArmorSlot, const ItemInstance *);
+	virtual ItemInstance* getArmor(ArmorSlot) const;
+	virtual std::vector<const ItemInstance *> getAllArmor() const;
 	virtual std::vector<ItemInstance *> getAllArmor();
 	virtual void getArmorTypeHash();
 	virtual void dropHeldItem();
 	virtual void dropAllArmor();
 	virtual void dropAllGear(int);
-	virtual void drop(ItemInstance const *, bool);
+	virtual void drop(const ItemInstance *, bool);
 	virtual void sendInventory() const;
-	virtual bool canBeAffected(MobEffectInstance const &);
-	virtual void getDamageAfterMagicAbsorb(EntityDamageSource const &, int);
+	virtual bool canBeAffected(const MobEffectInstance &);
+	virtual void getDamageAfterMagicAbsorb(const EntityDamageSource &, int);
 	virtual void _removeWhenFarAway();
 	virtual int getDeathLoot();
 	virtual void dropDeathLoot(int);
@@ -140,15 +140,15 @@ public:
 	virtual void _getAmbientSound();
 	virtual void _getHurtSound();
 	virtual void _getDeathSound();
-	virtual void getDamageAfterArmorAbsorb(EntityDamageSource const &, int);
+	virtual void getDamageAfterArmorAbsorb(const EntityDamageSource &, int);
 	virtual int getExperienceReward() const;
 	virtual bool useNewAi();
 	virtual void onEffectAdded(MobEffectInstance &);
-	virtual void onEffectUpdated(MobEffectInstance const &);
+	virtual void onEffectUpdated(const MobEffectInstance &);
 	virtual void onEffectRemoved(MobEffectInstance &);
 	virtual void registerAttributes();
 
 	float getYHeadRot();
-
+	void addEffect(const MobEffectInstance &);
 	void setPersistent();
 };

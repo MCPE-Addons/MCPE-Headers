@@ -23,7 +23,7 @@ public:
 	virtual ~Container();
 	virtual void addListener(ContainerListener*);
 	virtual void removeListener(ContainerListener*);
-	virtual void getItem(int) const = 0;
+	virtual ItemInstance* getItem(int) const = 0;
 	virtual void addItem(ItemInstance*);
 	virtual void addItemToFirstEmptySlot(ItemInstance*);
 	virtual void setItem(int, ItemInstance*) = 0;

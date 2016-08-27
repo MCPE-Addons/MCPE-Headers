@@ -6,6 +6,6 @@ enum ContainerType : int {
 	Furnace,
 	BrewingStand = 4,
 	Dispenser = 6,
-	Hopper = 8
-	Cauldron,
+	Hopper = 8,
+	Cauldron
 };

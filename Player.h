@@ -1,7 +1,6 @@
 #pragma once
 
-#include <raknet/RakNetTypes.h>
-
+#include "raknet/RakNetTypes.h"
 #include "Mob.h"
 #include "GameType.h"
 #include "Abilities.h"
@@ -27,7 +26,8 @@ public:
 
 	char filler5[24];					// 3344
 	std::string name;					// 3368
-	Abilities abilities;				// 3372
+	Abilities &abilities;				// 3372
+	char filler6[16];					// 3376
 	RakNet::RakNetGUID guid;			// 3392
 	char filler7[148];					// 3408
 	Inventory *inventory;				// 3556
