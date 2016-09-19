@@ -21,8 +21,20 @@ class IDataInput;
 class IDataOutput;
 class Entity;
 
+// Size: 76
 class Item {
 public:
+	class Tier {
+	public:
+		int idk;			// 0-4
+		int idk2;			// 4-8
+		int idk3;			// 8-12
+		int idk4;			// 12-16
+		int enchantValue;	// 16-20
+	};
+	
+	char itemfiller1[76];
+	
 	virtual ~Item();
 	virtual void setIcon(const std::string&, int);
 	virtual void setIcon(const TextureUVCoordinateSet&);
@@ -60,12 +72,12 @@ public:
 	virtual void getColor(const ItemInstance&) const;
 	virtual bool use(ItemInstance&, Player&);
 	virtual void useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
-	virtual void dispense(BlockSource&, Container&, int, const Vec3&, signed char);
+	virtual bool dispense(BlockSource&, Container&, int, const Vec3&, signed char);
 	virtual void useTimeDepleted(ItemInstance*, Level*, Player*);
 	virtual void releaseUsing(ItemInstance*, Player*, int);
 	virtual float getDestroySpeed(ItemInstance*, Block*);
 	virtual void hurtEnemy(ItemInstance*, Mob*, Mob*);
-	virtual void interactEnemy(ItemInstance*, Mob*, Player*);
+	virtual bool interactEnemy(ItemInstance*, Mob*, Player*);
 	virtual void mineBlock(ItemInstance*, BlockID, int, int, int, Mob*);
 	virtual void buildDescriptionName(const ItemInstance&) const;
 	virtual void buildEffectDescriptionName(const ItemInstance&) const;
