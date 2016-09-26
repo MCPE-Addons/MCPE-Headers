@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tag.h"
+#include "../nbt/Tag.h"
 
 class NamedTag : public Tag
 {

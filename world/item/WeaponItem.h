@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Item.h"
+#include "../world/item/Item.h"
 
 // Size: 84
 class WeaponItem : public Item {

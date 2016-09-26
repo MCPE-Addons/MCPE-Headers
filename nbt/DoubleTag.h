@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tag.h"
+#include "../nbt/Tag.h"
 
 // Size : 16
 class DoubleTag : public Tag

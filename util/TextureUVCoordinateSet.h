@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ResourceLocation.h"
+#include "../util/ResourceLocation.h"
 
 // Size: 28
 class TextureUVCoordinateSet {

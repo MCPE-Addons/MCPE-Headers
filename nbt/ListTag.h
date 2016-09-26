@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tag.h"
+#include "../nbt/Tag.h"
 
 // Size : 20
 class ListTag : public Tag

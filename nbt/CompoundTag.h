@@ -1,6 +1,6 @@
 #pragma once
 
-#include "NamedTag.h"
+#include "../nbt/NamedTag.h"
 
 class ListTag;
 class TagMemoryChunk;

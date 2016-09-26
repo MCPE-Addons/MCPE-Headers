@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-#include "CreativeItemCategory.h"
-#include "UseAnimation.h"
-#include "json/value.h"
+#include "../world/item/CreativeItemCategory.h"
+#include "../world/item/UseAnimation.h"
+#include "../json/value.h"
 
 class TextureUVCoordinateSet;
 class Block;

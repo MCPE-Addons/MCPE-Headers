@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ArmorSlot.h"
-#include "Item.h"
+#include "../world/item/ArmorSlot.h"
+#include "../world/item/Item.h"
 
 // Size: 92
 class ArmorItem : public Item {

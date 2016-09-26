@@ -1,13 +1,10 @@
 #pragma once
 
-#include "Packet.h"
+#include "../network/protocol/Packet.h"
 
-// Size: 16
-class SetPlayerGameTypePacket : public Packet {
+class ChangeDimensionPacket : public Packet {
 public:
-	int gametype;	// 12-16
-	
-	virtual ~SetPlayerGameTypePacket();
+	virtual ~ChangeDimensionPacket();
 	virtual char getId() const;
 	virtual void write(BinaryStream&) const;
 	virtual void read(BinaryStream&);

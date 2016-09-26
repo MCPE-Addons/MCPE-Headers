@@ -1,15 +1,10 @@
 #pragma once
 
-#include <string>
+#include "../network/protocol/Packet.h"
 
-#include "Packet.h"
-
-// Size: 16
-class DisconnectPacket : public Packet {
+class ItemFrameDropItemPacket : public Packet {
 public:
-	std::string message;	// 12-16
-	
-	virtual ~DisconnectPacket();
+	virtual ~ItemFrameDropItemPacket();
 	virtual char getId() const;
 	virtual void write(BinaryStream&) const;
 	virtual void read(BinaryStream&);

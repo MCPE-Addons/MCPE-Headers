@@ -7,7 +7,7 @@ class NetEventCallback;
 // Size: 12
 class Packet {
 public:
-	char packetfiller1[12];
+	char packetfiller1[8];
 	
 	virtual ~Packet();
 	virtual char getId() const = 0;
